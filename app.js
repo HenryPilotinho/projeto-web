@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 
+app.use("/img", express.static(__dirname + "/img"))
 app.get("/", function(req, res){
     res.send("Ta certinho")
 })
