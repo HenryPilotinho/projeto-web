@@ -38,3 +38,28 @@ const agendamentos = sequelize.define("agendamentos",{
 })
 
 //agendamentos.sync({force: true})
+
+
+
+app.get("/", function(req,res){
+    res.send("Tela inicial")
+})
+
+app.get("/cadastrar/:nome/:endereco/:bairro/:cep/:cidade/:estado/:observacao", function(req,res){
+    agendamentos.create({
+        nome:req.params.nome,
+        endereço:req.params.endereco,
+        bairro:req.params.bairro,
+        cep:req.params.cep,
+        cidade:req.params.cidade,
+        estado:req.params.estado,
+        observação:req.params.observacao
+
+    })
+    res.redirect("/")
+})
+
+
+app.listen(8081, function(){
+    console.log("carregou na portinha do nelson")
+})
